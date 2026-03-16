@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="eHEM">
+  <meta name="application-name" content="eHEM">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>eHEM</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      background: #ffffff;
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+    iframe {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <iframe
+    src="https://script.google.com/macros/s/AKfycbxedgoAXwPQ6t0y2_z525M73s2wu2RDNSJif8mYEAuEysAnf_alMbyx6uch9YZG1o_Xxw/exec"
+    allowfullscreen>
+  </iframe>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/ehem/sw.js')
+          .then(r => console.log('[eHEM] SW registered:', r.scope))
+          .catch(e => console.warn('[eHEM] SW failed:', e));
+      });
+    }
+  </script>
+</body>
+</html>
